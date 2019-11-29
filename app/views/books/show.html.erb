@@ -20,5 +20,18 @@
   <%= image_tag(@book.picture_url, width: 600) if @book.picture.present? %>
 </p>
 
+<h3>Reviews</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.title %></strong>
+    <br>
+    <p><%= comment.rate %></p>
+    <p><%= comment.description %></p>
+    
+    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+<% end %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

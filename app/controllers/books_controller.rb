@@ -10,6 +10,8 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @comments = @book.comments.all
+    @comment = @book.comments.build
   end
 
   # GET /books/new
@@ -71,4 +73,7 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :author, :description, :picture)
     end
+
+  @comments = @book.comments.all
+  @comment = @book.comments.build
 end
