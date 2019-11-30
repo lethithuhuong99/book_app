@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :comment_owner]
+  before_action :authenticate_user!,except:[:index]
+  before_action :comment_owner, only: [:edit, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
@@ -60,6 +62,13 @@ class CommentsController < ApplicationController
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def comment_owner
+     unless @comment.user_id == current_user.id
+      flash[:notice] = 'Access denied as you are not owner of this Comment'
+      redirect_to comments_path
+     end
   end
 
   private

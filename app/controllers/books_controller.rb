@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :book_owner]
+  before_action :authenticate_user!,except:[:index]
+    before_action :book_owner, only: [:edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
@@ -63,6 +65,13 @@ class BooksController < ApplicationController
     end
   end
 
+  def book_owner
+     unless @book.user_id == current_user.id
+      flash[:notice] = 'Access denied as you are not owner of this Book'
+      redirect_to books_path
+     end
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -71,7 +80,7 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :description, :picture)
+      params.require(:book).permit(:title, :author, :description, :picture, :user_id)
     end
 
   @comments = @book.comments.all
