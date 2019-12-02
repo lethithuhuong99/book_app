@@ -1,13 +1,20 @@
+<section>
+<div class="login-border">
+
+<div class="login-contain">
+
+<div class="title">
 <h2>Log in</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -18,9 +25,12 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="actions login-button">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+</div>
+</div>
+</section>
