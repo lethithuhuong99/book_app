@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :books
   has_many :comments
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
   include Gravtastic
 	gravtastic
 end

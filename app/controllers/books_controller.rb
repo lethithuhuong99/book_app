@@ -20,6 +20,9 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
   end
+#   def new
+#   @book = Book.new(params[:book])
+# end
 
   # GET /books/1/edit
   def edit
