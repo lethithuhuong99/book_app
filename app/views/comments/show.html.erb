@@ -25,6 +25,8 @@
   <%= @comment.user_id %>
 </p>
 
+<% if (user_signed_in? && (current_user.id == @comment.user_id)) %>
+  <%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%end%>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', book_path(@comment.book_id)  %>
