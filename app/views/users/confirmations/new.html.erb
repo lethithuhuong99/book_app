@@ -1,18 +1,47 @@
-<h2 class="abc">Resend confirmation instructions</h2>
+<section>
+	<div class="confirmation-border">
 
-</div>
+		<div class="pt-5 title">
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+			<h2 class="abc">Resend confirmation instructions</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+		</div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+	<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
 
-<%= render "users/shared/links" %>
+		<% if resource.errors.any? %>
+		  <div class="errors-message" id="error_explanation">
+		    <p>
+		      <%= I18n.t("errors.messages.not_saved",
+		                 count: resource.errors.count,
+		                 resource: resource.class.model_name.human.downcase)
+		       %>
+		    </p>
+		    <ul>
+		      <% resource.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+	  
+	  <div class="container">
+		  <div class="mt-3 field">
+		    <!-- <%= f.label :email %><br /> -->
+		    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) , class:"email", placeholder: "Email" %>
+		  </div>
+		</div>
+
+		<div class="mt-3 container">
+			  <div class="actions">
+			    <%= f.submit "Resend confirmation instructions",class:"confirmation-button" %>
+			  </div>
+			<% end %>
+
+		</div>
+		<div class="mt-3">
+			<%= render "users/shared/links" %>
+		</div>
+	</div>
+	<!-- <%= render "devise/shared/error_messages", resource: resource %> -->
+</section>

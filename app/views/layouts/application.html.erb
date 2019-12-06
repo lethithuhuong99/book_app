@@ -11,32 +11,32 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="application-page">
+  <body class="application-page body-background">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark header-background">
       <div class="container">
-        <a class="navbar-brand" href="/">The Book App</a>
+        <a class="navbar-brand" href="/">THE BOOK APP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/books">Books</a>
+              <a class="nav-link" href="/books">BOOKS</a>
             </li>
-            <li class="nav-item">
-              <%= link_to 'New Book', new_book_path, class: "nav-link" %>
+            <li class="nav-item active">
+              <%= link_to 'NEW BOOK', new_book_path, class: "nav-link" %>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/pages/info">Info</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/info">INFORMATION</a>
             </li>
           </ul>
           <p class="navbar-text float-right">
           <% if user_signed_in? %>
 
             <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
-            Logged in as <strong><%= current_user.last_name %></strong>.
+            <strong class="current-user"><%= current_user.first_name %> <%= current_user.last_name %></strong>.
             <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 
@@ -49,7 +49,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container ">
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -59,7 +59,7 @@
       <%= yield %>
     </div>
 
-    <footer>
+    <footer class="footer">
       <div class="container">
         Book Management <%= Time.now.year %>
       </div>
