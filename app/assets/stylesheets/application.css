@@ -13,6 +13,11 @@ th {
 th {
   border-bottom: 1px solid #ddd;
 }
+
+.thead-pink {
+  background-color: #ff0084;
+  color: #fff;
+}
 .gravatar {
   height: 30px;
   width: auto;
@@ -36,23 +41,27 @@ li:hover {
 
 /*application-body*/
 .body-background{
-  /*background-image: url('bg.jpg');
-	  background-size: cover;*/
-    background-color: #f0e9ec;
+  background-image: url('bg.jpg');
+	  background-size: cover;
 
+    
+
+}
+
+.bg-books {
+  background-color: #f0e9ec;
 }
 
 /*footer*/
 
-/*login-page*/
-.login-border, .signup-border, .confirmation-border {
+/*login-page . signup-page . confirm-page*/
+.login-border, .signup-border, .confirmation-border, .forgot-password-border {
   width: 350px;
   height: 450px;
   background-color: #ff0084;
   border: 1px;
   border-color: white;
   border-radius: 10px;
-  opacity: 3;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -80,7 +89,7 @@ li:hover {
   text-align: center;
 }
 
-.login-button, .signup-button, .confirmation-button {
+.login-button, .signup-button, .confirmation-button, .new-book-button, .reset-password-button {
   border-radius: 50px;
   font-family: "Helvetica Neue";
   font-weight: bold;
@@ -101,8 +110,49 @@ li:hover {
   margin-bottom: 0; 
 }
 
+/*Create book*/
+
+.create-book {
+  height: 100%;
+    width: 100%;
+}
+
+.new-book-border {
+  width: 500px;
+  height: 500px;
+  background-color: #ff0084;
+  border: 1px;
+  border-radius: 10px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+}
+
+.contain-new-book-border {
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+  color: #fff;
+}
 
 
+.input {
+  width: 100%;
+}
+
+
+/*edit account*/
+.edit-account {
+  float: left;
+}
+
+.cancel-my-account{
+  float: right;
+}
 
 
 

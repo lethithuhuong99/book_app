@@ -1,16 +1,41 @@
-<h2>Forgot your password?</h2>
+<div class="forgot-password-border">
+
+<div class="mt-5 title">
+	<h2>Forgot your password?</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <!-- <%= render "devise/shared/error_messages", resource: resource %> -->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <% if resource.errors.any? %>
+    <div  id="error_explanation">
+      <p class="errors-message">
+        <%= I18n.t("errors.messages.not_saved",
+                   count: resource.errors.count,
+                   resource: resource.class.model_name.human.downcase)
+         %>
+      </p>
+      <ul class="errors-message">
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mt-3 field">
+    <!-- <%= f.label :email %><br /> -->
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"mt-3 email",placeholder:"Email"%>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="mt-3 actions">
+    <%= f.submit "Send me reset password instructions", class:"reset-password-button" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<div class="mt-3" >
+	<%= render "users/shared/links"%>
+</div>
+
+
+</div>
