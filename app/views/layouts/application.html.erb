@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="application-page <%=  current_page?(new_user_session_path) || current_page?(new_user_registration_path ) || current_page?(new_confirmation_path(resource_name)) || current_page?(new_password_path(resource_name)) ? 'body-background': 'bg-books' %>" >
+  <body class="application-page <%=  current_page?(new_user_session_path) || current_page?(new_user_registration_path ) ? 'body-background': 'bg-books' %>" >
 
     <nav class="navbar navbar-expand-lg navbar-dark header-background">
       <div class="container">
