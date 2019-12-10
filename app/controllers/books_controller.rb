@@ -86,6 +86,4 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :author, :description, :picture, :user_id)
     end
 
-  @comments = @book.comments.all
-  @comment = @book.comments.build
 end
