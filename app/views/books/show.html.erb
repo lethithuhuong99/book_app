@@ -1,6 +1,33 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-<p>
+<section>
+  <div class="row">
+    <div class="col-md-6 mt-5 book-image">
+      <%= image_tag(@book.picture_url, width:"100%") if @book.picture.present? %>
+    </div>
+
+    <div class="col-md-6 mt-5">
+      <div class="ml-5 book-content">
+        <div class="text-center book-title ">
+          <%= @book.title %>
+        </div>
+
+        <div class="text-center book-author">
+          <strong>Author:</strong>
+          <%= @book.author %>
+        </div>
+
+        <div class="book-description">
+          <%= @book.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <p>
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
@@ -9,7 +36,6 @@
   <strong>Author:</strong>
   <%= @book.author %>
 </p>
-
 <p>
   <strong>Description:</strong>
   <%= @book.description %>
@@ -18,24 +44,41 @@
 <p>
   <strong>Picture:</strong>
   <%= image_tag(@book.picture_url, width: 600) if @book.picture.present? %>
-</p>
+</p> -->
 
-<h3>Reviews</h3>
-<%= render partial: 'comments/form', locals: { comment: @comment } %>
-<% @comments.each do |comment| %>
-  <div>
-    <strong><%= comment.title %></strong>
-    <br>
-    <p><%= comment.rate %></p>
-    <p><%= comment.description %></p>
-    <p><%= link_to 'More', comment %>  </p>
-    <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
-        <p> <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %> </p>
-    <%end%>
-         
-    
+<section>
+  <div class="row">
+    <div class="col-md-6 mt-5">
+    <h3>Reviews</h3>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+    </div>
+
+    <div class="col-md-6 mt-5">
+      <% @comments.each do |comment| %>
+        <div>
+          <strong>
+            <strong>Title:</strong>
+            <%= comment.title %>  
+          </strong>
+          <br>
+          <p>
+            <strong>Rate:</strong>
+            <%= comment.rate %>
+          </p>
+          <p>
+            <strong>Description:</strong>
+            <%= comment.description %>              
+          </p>
+          <p><%= link_to 'More', comment %>  </p>
+          <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
+              <p> <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+          <%end%>             
+          
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</section>
 
 <% if (user_signed_in? && (current_user.id == @book.user_id)) %>
           <%= link_to 'Edit', edit_book_path(@book) %> |

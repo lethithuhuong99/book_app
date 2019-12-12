@@ -38,7 +38,11 @@
   </div>
 
   <div class="mt-3 actions">
-    <%= form.submit "CREATE BOOK", class:"new-book-button" %>
+    <% if current_page?(new_book_path) %>
+      <%= form.submit  "CREATE BOOK", class:"new-book-button" %>
+    <% else %>
+      <%= form.submit  "UPDATE BOOK", class:"new-book-button" %>
+    <% end %>
   </div>
 
   <%=  form.hidden_field :user_id , :value => current_user.id %>
