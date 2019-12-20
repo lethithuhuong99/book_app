@@ -33,6 +33,7 @@ li:hover {
 
 .header-background{
   background-color: #ff0084;
+
 }
 
 .current-user {
@@ -40,12 +41,9 @@ li:hover {
 }
 
 /*application-body*/
-.body-background{
-  background-image: url('bg.jpg');
-	  background-size: cover;
-
-    
-
+#bg-signin, #bg-login, #bg-confirmation, #bg-forgot-password {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.25)), url('bg.jpg');
+  background-size: cover;
 }
 
 .bg-books {
@@ -77,6 +75,7 @@ li:hover {
   font-size: 50px;
   font-weight: 300;
   color: #fff;
+  text-align: center;
 }
 
 .email, .password, .first-name, .last-name, .confirm-password{
@@ -184,3 +183,35 @@ hr {
   color: white;
   background-color: #fa6ea1;
 }
+
+.create-book-form {
+  width: 350px;
+  height: 350px;
+  border: 1px solid #fff;
+  box-shadow:0 1px 10px 0 rgba(34,34,34,.08), 0 4px 5px 0 rgba(34,34,34,.1);
+  border-radius: 5px;
+  background-color: #fff;
+  margin-left: 170px;
+}
+
+.description {
+  height: 100px;
+}
+
+.create-picture-form{
+  height: 350px;
+  border: 1px solid #fff;
+  box-shadow:0 1px 10px 0 rgba(34,34,34,.08), 0 4px 5px 0 rgba(34,34,34,.1);
+  border-radius: 5px;
+  background-color:#fff;
+}
+
+#bg-new-book, #bg-edit-book {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.25)),  url('book.jpg');
+  background-size: cover;
+}
+
+.field {
+  font-weight:bold;
+}
+

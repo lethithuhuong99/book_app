@@ -1,49 +1,66 @@
-<%= form_with(model: book, local: true) do |form| %>
+<section>
+  <%= form_with(model: book, local: true) do |form| %>
+  <div class="row">
 
-  <% if book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-
-      <ul>
-        <% book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="col-md-4 mt-5 field create-picture-form">  
+      <%= form.label :picture %>
+      <br>
+      <%= form.file_field :picture,  class:"btn btn-outline-info" %>
+      <br>
+      <br>
+      <%= image_tag(@book.picture_url, width:"100%") if @book.picture.present?%>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title%>
-    <br>
-    <%= form.text_field :title, class:"input" %>
+    <div class="col-md-6 mt-5 create-book-form">
+
+      <% if book.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+          <ul>
+            <% book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :title%>
+        <br>
+        <%= form.text_field :title, class:"input" %>
+
+      </div>
+
+      <div class="field">
+        <%= form.label :author%>
+        <br>
+        <%= form.text_field :author, class:"input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :description %>
+        <br>
+        <%= form.text_field :description, class:"input description" %>
+      </div>
+
+      <!-- <div class="field">
+        <%= form.label :picture %>
+        <br>
+        <%= form.file_field :picture,  class:"btn btn-outline-light" %>
+      </div> -->
+
+      <div class="mt-3 actions">
+        <% if current_page?(new_book_path) %>
+          <%= form.submit  "CREATE BOOK", class:"new-book-button" %>
+        <% else %>
+          <%= form.submit  "UPDATE BOOK", class:"new-book-button" %>
+        <% end %>
+      </div>
+
+      <%=  form.hidden_field :user_id , :value => current_user.id %>
+      <% end %>
+    </div>
 
   </div>
-
-  <div class="field">
-    <%= form.label :author%>
-    <br>
-    <%= form.text_field :author, class:"input" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <br>
-    <%= form.text_area :description, class:"input" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :picture %>
-    <br>
-    <%= form.file_field :picture,  class:"btn btn-outline-info" %>
-  </div>
-
-  <div class="mt-3 actions">
-    <% if current_page?(new_book_path) %>
-      <%= form.submit  "CREATE BOOK", class:"new-book-button" %>
-    <% else %>
-      <%= form.submit  "UPDATE BOOK", class:"new-book-button" %>
-    <% end %>
-  </div>
-
-  <%=  form.hidden_field :user_id , :value => current_user.id %>
-<% end %>
+</section> 

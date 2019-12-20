@@ -2,7 +2,7 @@
 
 <section>
   <div class="row">
-    <div class="col-md-6 mt-5 book-image">
+    <div class="col-md-6 mt-5 ">
       <%= image_tag(@book.picture_url, width:"100%") if @book.picture.present? %>
     </div>
 
@@ -30,7 +30,7 @@
 <%= link_to 'Back', books_path , class:"back"%>
 
 </section>
-
+<hr>
 
 
 <!-- <p>

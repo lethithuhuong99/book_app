@@ -1,6 +1,12 @@
-<h1>Editing Book</h1>
+<body id="bg-edit-book">
 
-<%= render 'form', book: @book %>
+<h1 class="mt-3 title">Editing Book</h1>
 
-<%= link_to 'Show', @book %> |
-<%= link_to 'Back', books_path %>
+<div class=" mt-3">
+	<%= render 'form', book: @book %>
+	<div class="mt-3">
+	<%= link_to 'Back', @book, style:"color:#fff; float:left" %>
+	
+	</div>
+</div>
+</body>
