@@ -216,12 +216,12 @@ hr {
 }
 
 .create-picture-form {
-  height: 350px;
   border: 1px solid #fff;
   box-shadow: 0 1px 10px 0 rgba(34, 34, 34, 0.08),
     0 4px 5px 0 rgba(34, 34, 34, 0.1);
   border-radius: 5px;
   background-color: #fff;
+  padding: 20px;
 }
 
 #bg-new-book,
