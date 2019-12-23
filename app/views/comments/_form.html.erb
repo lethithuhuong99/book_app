@@ -1,20 +1,21 @@
 <%= form_with(model: comment, local: true) do |form| %>
+
   <% if comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <i class="edit-profile-errors-message">* <%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</i>
 
-      <ul>
+      <ul class="edit-profile-errors-message">
         <% comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li><i><%= message %></i></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
+ 
   <div class="field">
     <%= form.label :title %>
     <br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, style:"width: 60%" %>
   </div>
 
   <div class="field">
@@ -26,7 +27,7 @@
   <div class="field">
     <%= form.label :description %>
     <br>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, style:"width: 60%" %>
   </div>
 
   <%= form.hidden_field :book_id %>

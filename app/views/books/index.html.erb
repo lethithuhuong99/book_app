@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
-<%= link_to 'New Book', new_book_path %>
+<h1 class="text-center mb-5">Books</h1>
 
-<table class="table  table-bordered">
+
+<%= link_to new_book_path  do %>
+  
+  <i class="fa fa-book btn btn-outline-danger"> New Book</i>
+
+<% end %>
+
+
+<table class="table table-bordered mt-5">
   <thead class="thead-pink">
     <tr>
       <th>Title</th>
@@ -17,11 +24,22 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= link_to book.title, book %></td>
+        <td><strong> <%= link_to book.title, book , style:"color:#000"%> </strong></td>
         <td><%= book.author %></td>
         <% if (user_signed_in? && (current_user.id == book.user_id)) %>
-          <td><%= link_to 'Edit', edit_book_path(book) %></td>
-          <td><%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <%= link_to edit_book_path(book)  do %>
+  
+              <i class='fas fa-edit'  style="color: #000"> Edit</i>
+
+            <% end %>                         
+          </td>
+
+          <td>
+            <%= link_to book, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class='fas fa-trash' style="color: #f00"> Delete</i>
+            <% end %>
+            </td>
         <%end%>
       </tr>
     <% end %>

@@ -120,6 +120,12 @@ li:hover {
   margin-bottom: 0;
 }
 
+.edit-profile-errors-message {
+  color: #f00;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
 .dropdown {
 }
 
@@ -154,6 +160,8 @@ li:hover {
 
 .input {
   width: 100%;
+  border: 1px solid #adb0ad;
+  border-radius: 5px;
 }
 
 /*edit account*/
@@ -162,7 +170,7 @@ li:hover {
 }
 
 .cancel-my-account {
-  float: right;
+  margin-left: 150px;
 }
 
 /*show book*/
@@ -189,7 +197,7 @@ hr {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .back:hover,
@@ -202,7 +210,7 @@ hr {
 
 .create-book-form {
   width: 350px;
-  height: 350px;
+  padding: 20px;
   border: 1px solid #fff;
   box-shadow: 0 1px 10px 0 rgba(34, 34, 34, 0.08),
     0 4px 5px 0 rgba(34, 34, 34, 0.1);
@@ -234,7 +242,7 @@ hr {
   font-weight: bold;
 }
 
-.new-book-button {
+.new-book-button, .update-profile-button {
   border-radius: 50px;
   font-family: "Helvetica Neue";
   font-weight: bold;
@@ -248,14 +256,17 @@ hr {
   border: 1px #f5593d;
 }
 
-.navbar-link {
+.navbar-link,
+.edit-profile-back {
   color: black;
 }
 
-.navbar-link:hover {
+.navbar-link:hover,
+.edit-profile-back:hover {
   color: black;
   text-decoration: none;
 }
+
 
 .new-button-add {
   background-color: #ff0084;
@@ -268,5 +279,18 @@ hr {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 10px;
+}
+
+
+.edit-profile {
+  width:60%;
+  float: right;
+  border: 1px solid #adb0ad;
+  border-radius: 5px;
+
+}
+
+.set-style {
+  color: #000;
 }

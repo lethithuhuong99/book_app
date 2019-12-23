@@ -1,60 +1,89 @@
-<div class="mt-3 edit-account">
+<div class="row">
 
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <div class="col-md-7 mt-3 edit-account">
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <!-- <h2>Edit <%= resource_name.to_s.humanize %></h2> -->
+    <h2>Edit Profile</h2>
 
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true %>
-    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <!-- <%= render "devise/shared/error_messages", resource: resource %> -->
 
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+       <!-- error -->
+      <% if resource.errors.any? %>
+        <div  id="error_explanation">
+          <i class="edit-profile-errors-message">
+           * <%= I18n.t("errors.messages.not_saved",
+                       count: resource.errors.count,
+                       resource: resource.class.model_name.human.downcase)
+             %>
+          </i>
+          <ul class="edit-profile-errors-message">
+           <% resource.errors.full_messages.each do |message| %>
+              <i><li><%= message %></li></i> 
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+      <div class="mt-5 field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, autofocus: true, class:"edit-profile" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
+      <div class="mt-3 field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, autofocus: true,class:"edit-profile" %>
+      </div>
 
-    <div class="mt-3 actions">
-      <%= f.submit "Update", class:"btn btn-primary" %>
+      <div class="mt-3 field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"edit-profile" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="mt-3 field">
+        <%= f.label :new_password %> 
+        <%= f.password_field :password, autocomplete: "new-password",placeholder:"#{@minimum_password_length} characters minimum",class:"edit-profile"  %>
+       <!--  <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %> -->
+        <br>
+        <sup><i>(Leave blank if you don't want to change)</i></sup>
+
+      </div>
+
+      <div class="mt-3 field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"edit-profile" %>
+      </div>
+
+      <div class="mt-3 field">
+        <%= f.label :current_password %> 
+        <%= f.password_field :current_password, autocomplete: "current-password",class:"edit-profile" %>
+        <br>
+        <sup><i><i>(To confirm your changes)</i></sup>
+      </div>
+
+     
+      
+
+      <div class="mt-3 text-center actions">
+        <%= f.submit "UPDATE PROFILE", class:"update-profile-button" %>
+      </div>
+    <% end %>
+    <div class="mt-3">
+    <%= link_to '<< Back', books_path, class:"edit-profile-back"%>
     </div>
-  <% end %>
-  <div class="mt-3">
-  <%= link_to "Back", :back %>
   </div>
+
+  <div class="mt-3 cancel-my-account">
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-secondary" %></p>
+  </div>
+
 </div>
-
-<div class="mt-3 cancel-my-account">
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-secondary" %></p>
-</div>
-
