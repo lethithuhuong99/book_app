@@ -24,10 +24,12 @@
     </div>
   </div>
 
+  <%= link_to '<< Back', books_path , class:"back"%>
+
+
   <% if (user_signed_in? && (current_user.id == @book.user_id)) %>
           <%= link_to 'Edit', edit_book_path(@book), class:"edit" %> 
 <%end%>
-<%= link_to 'Back', books_path , class:"back"%>
 
 </section>
 <hr>
