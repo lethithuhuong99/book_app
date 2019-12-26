@@ -2,13 +2,13 @@
 
 <h1 class="text-center mb-5">Books</h1>
 
+<div class="container-fluid text-right">
+  <%= link_to new_book_path  do %>
+    
+    <i class="fa fa-book btn btn-outline-danger"> New Book</i>
 
-<%= link_to new_book_path  do %>
-  
-  <i class="fa fa-book btn btn-outline-danger"> New Book</i>
-
-<% end %>
-
+  <% end %>
+</div>
 
 <table class="table table-bordered mt-5">
   <thead class="thead-pink">
@@ -17,7 +17,8 @@
       <th>Author</th>
     <!--   <th>Description</th>
       <th>Picture</th> -->
-      <th colspan="2">Actions</th>
+      <th class="text-center">Edit</th>
+      <th class="text-center">Delete</th>
     </tr>
   </thead>
 
@@ -30,14 +31,14 @@
           <td>
             <%= link_to edit_book_path(book)  do %>
   
-              <i class='fas fa-edit'  style="color: #000"> Edit</i>
+              <i class='fas fa-edit text-center container-fluid' style="color: #000"></i>
 
             <% end %>                         
           </td>
 
           <td>
             <%= link_to book, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class='fas fa-trash' style="color: #f00"> Delete</i>
+              <i class='fas fa-trash text-center container-fluid' style="color: #f00"></i>
             <% end %>
             </td>
         <%end%>

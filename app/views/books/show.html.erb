@@ -1,6 +1,6 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-<section>
+<section class="book">
   <div class="row">
     <div class="col-md-6 mt-5 ">
       <%= image_tag(@book.picture_url, width:"100%") if @book.picture.present? %>
@@ -34,27 +34,7 @@
 </section>
 <hr>
 
-
-<!-- <p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@book.picture_url, width: 600) if @book.picture.present? %>
-</p> -->
-
-<section>
+<section class="comment">
   <div class="row">
     <div class="col-md-6 mt-5">
     <h3>Reviews</h3>
@@ -65,7 +45,7 @@
       <% @comments.each do |comment| %>
         <div>
           <strong>
-            <strong>Title:</strong>
+            <strong>Created by:</strong>
             <%= comment.title %>  
           </strong>
           <br>
@@ -77,8 +57,8 @@
             <strong>Description:</strong>
             <%= comment.description %>              
           </p>
-         <%= link_to 'More', comment, class:"more" %> 
           <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
+              <%= link_to 'Edit', edit_comment_path(comment), class:"more"  %> 
               <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } , class:"delete"%> 
           <%end%>             
           <hr>

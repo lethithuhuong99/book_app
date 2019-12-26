@@ -15,11 +15,11 @@
 
       <% if book.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+          <i class="create-book-errors-message"><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</i>
 
-          <ul>
+          <ul class="create-book-errors-message">
             <% book.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+              <li> <i> <%= message %> </i> </li>
             <% end %>
           </ul>
         </div>

@@ -11,12 +11,12 @@
       </ul>
     </div>
   <% end %>
- 
+<!--  
   <div class="field">
     <%= form.label :title %>
     <br>
     <%= form.text_field :title, style:"width: 60%" %>
-  </div>
+  </div> -->
 
   <div class="field">
     <%= form.label :rate %>
@@ -32,6 +32,7 @@
 
   <%= form.hidden_field :book_id %>
   <%=  form.hidden_field :user_id , :value => current_user.id %>
+  <%= form.hidden_field :title, :value => current_user.first_name + " " + current_user.last_name %>
 
   <div class="actions">
     <%= form.submit "Add", class:"new-button-add" %>
